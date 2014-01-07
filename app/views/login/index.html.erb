@@ -1,0 +1,27 @@
+<div id="content">
+  <div class="login">
+  	<div class="login_panel">
+  		<% if flash[:error] %>
+  			<div class='flash_error' style="color: #fff; margin-bottom: 2px;">
+  				<%= flash[:error] %>
+  			</div>
+  		<% end %>
+  		<% if flash[:notice] %>
+  			<div class='flash_notice'  style="color: #555">
+  				<%= flash[:notice] %>
+  			</div>
+  		<% end %>
+  		<div class="login_email">
+  			<%= form_tag do %>
+  				<h2>Email</h2>
+  				<%= text_field 'account', 'email', :size => '30', :height => '30px' %>
+  				<h2>Password</h2>
+  				<%= password_field 'account', 'password', :size => '30', :height => '30px' %>
+  				<div class="submit">
+  				  <%= submit_tag('Login') %>
+  				</div>
+  			<% end %>
+  		</div>
+  	</div>
+	</div>
+</div>

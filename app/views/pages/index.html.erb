@@ -1,0 +1,230 @@
+<div id="header" class="landing-header">
+
+  <%= link_to root_path do |link| %>
+    <div class="logo"></div>
+  <% end %>
+
+  <ul class="nav-right">
+
+    <!-- Login -->
+    <%= link_to '#' do %>
+      <li class="login">Log in</li>
+    <% end %>
+
+    <%= link_to '#' do %>
+      <li>Learn More</li>
+    <% end %>
+
+  </ul>
+</div>
+
+  <div id="block-home">
+
+    <div class="grid-bg">
+
+      <div class="row">
+        <div class="description">
+          <h2>Video analysis and instruction for all sports</h2>
+          <%= link_to "Get the free app", '#', class: 'button' %>
+        </div>
+    
+        <div id="ipad" class="transition">
+          <div id="ipad-image"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div id="question">
+      <div class="or">
+        <div class="circle">or</div>
+        <div class="line"></div>
+      </div>
+
+      <a href="#" class="left-athlete active">
+        <p>Are you an <strong>athlete</strong>?</p>
+      </a>
+      <a href="#" class="right-coach non-active">
+        <p>Are you a <strong>coach</strong>?</p>
+      </a>
+
+      <div class="triangle athlete"></div>
+    </div>
+
+  </div><!-- end home block -->
+
+
+  <div id="block-features" class="home-section">
+
+    <div class="athlete-content">
+
+      <h3>
+        <span class="high-z-index">How does Ubersense</span><br />
+        <span>help you improve?</span>
+      </h3>
+
+      <div id="athlete-showcase" class="row">
+
+          <div class="captions-container left">
+            <div class="caption active">
+              <div class="counter">1</div>
+              <h4>Analyze</h4>
+              <p>Record your workout in HD and analyze using slow motion and drawings.</p>
+              <!--<a href="#" class="button red-outline">Learn More</a>-->
+            </div>
+
+            <div class="caption">
+              <div class="counter">2</div>
+              <h4>Compare</h4>
+              <p>Learn from the best by comparing your videos <br>side-by-side with professional athletes.</p>
+              <!--<a href="#" class="button red-outline">Learn More</a>-->
+            </div>
+
+            <div class="caption">
+              <div class="counter">3</div>
+              <h4>Improve</h4>
+              <p>Watch drills from professional coaches and share your videos to get expert feedback.</p>
+              <!--<a href="#" class="button red-outline">Learn More</a>-->
+            </div>
+          </div>
+
+          <div class="iphone-container">
+            <div class="sliding-image"></div>
+          </div>
+
+      </div><!-- end showcase -->
+
+    </div><!-- end athlete content -->
+
+    <div class="coach-content hide">
+      
+      <h3>
+        <span class="high-z-index">How does Ubersense</span><br />
+        <span>help you coach?</span>
+      </h3>
+
+      <div id="coach-showcase" class="row">
+
+          <div class="captions-container left">
+            <div class="caption active">
+              <div class="counter">1</div>
+              <h4>Teach</h4>
+              <p>Record your athletes in HD and review in slow motion using drawings, comparisons and voice-overs.</p>
+              <!--<a href="#" class="button red-outline">Learn More</a>-->
+            </div>
+
+            <div class="caption">
+              <div class="counter">2</div>
+              <h4>Manage</h4>
+              <p>Manage clients or team members and organize their videos by name and technique.</p>
+              <!--<a href="#" class="button red-outline">Learn More</a>-->
+            </div>
+
+            <div class="caption">
+              <div class="counter">2</div>
+              <h4>Connect</h4>
+              <p>Grow your audience by engaging with athletes and coaches around the world.</p>
+              <!--<a href="#" class="button red-outline">Learn More</a>-->
+            </div>
+          </div>
+
+          <div class="iphone-container">
+            <div class="sliding-image"></div>
+          </div>
+
+      </div><!-- end showcase -->
+
+    </div><!-- end coach content -->
+
+  </div><!-- end block features -->
+
+
+<div class="download-app">
+  <div class="row">
+
+    <div class="column">
+      <%= link_to('#') do %>
+        <div class="logo"></div>
+      <% end %>
+      <div class="copy-text">Video analysis and instruction for all sports</div>
+      <div class="copy-text-description">For iPhone and iPad</div>
+      <%= link_to('#') do %>
+        <div class="apple-download-icon"></div>
+      <% end %>
+    </div>
+
+    <div class="column">
+      <%= link_to('#') do %>
+        <div class="logoGolf"></div>
+      <% end %>
+      <div class="copy-text">Golfer or golf instructor?</div>
+      <div class="copy-text-description">Get the Golf app instead or <%= link_to 'learn more', '#' %>.</div>
+      <%= link_to('#') do %>
+        <div class="apple-download-icon"></div>
+      <% end %>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- Footer -->
+<div class="footer">
+  <div class="row">
+
+    <div class="columns">
+      <p class="header-title">Ubersense</p>
+      <ul>
+        <a href="/"><li>Home</li></a>
+        <a href="#"><li>Learn More</li></a>
+        <a href="#"><li>About the Company</li></a>
+        <a href="#"><li>Careers</li></a>
+        <a href="#"><li>Blog</li></a>
+      </ul>
+    </div>
+    <div class="columns">
+      <p class="header-title">Ubersense Golf</p>
+      <ul>
+        <a href="#"><li>Home</li></a>
+        <a href="#"><li>Ambassadors</li></a>
+        <a href="#"><li>Golf Instruction & Learning</li></a>
+        <a href="#"><li>Testimonials</li></a>
+      </ul>
+    </div>
+    <div class="columns">
+      <p class="header-title">Connect</p>
+      <ul class="social">
+        <a href="#" target="_blank"><li><i class="icon-facebook"></i>Facebook</li></a>
+        <a href="#" target="_blank"><li><i class="icon-twitter"></i>Twitter</li></a>
+        <a href="#" target="_blank"><li><i class="icon-instagram"></i>Instagram</li></a>
+        <a href="#" target="_blank"><li><i class="icon-gplus"></i>Google +</li></a>
+        <a href="#" target="_blank"><li><i class="icon-mail"></i>Contact Us</li></a>
+      </ul>
+    </div>
+
+
+    <div class="row">
+      <div class="columns sports-videos">
+        <p class="header-title">Sports Analysis Videos</p>
+        <ul>
+          <%= link_to '#' do %><li>Golf</li><% end %>
+          <%= link_to '#' do %><li>Baseball</li><% end %>
+          <%= link_to '#' do %><li>Basketball</li><% end %>
+          <%= link_to '#' do %><li>Tennis</li><% end %>
+        </ul>
+        <ul>
+          <%= link_to '#' do %><li><em>View all sports videos<i class="icon-angle-right"></i></em></li><% end %>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="text-center">
+    <a href="#"><div id="toTop" class="logo-grey"></div></a>
+    <p>&copy; 2011-<%= Time.now.year %> Ubersense Inc. All Rights Reserved.
+      <br /><%= link_to 'Privacy Policy', '#' %> | <%= link_to 'Terms of Service', '#' %>
+    </p>
+  </div>
+  
+</div>

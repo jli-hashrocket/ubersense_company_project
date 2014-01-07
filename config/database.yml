@@ -1,0 +1,7 @@
+development:
+  adapter: mysql2
+  database: ubersense_launch_academy
+  username: ubersense
+  password: uberdb!
+
+

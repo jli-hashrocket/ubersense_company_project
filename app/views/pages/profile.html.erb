@@ -1,0 +1,89 @@
+<!-- Header -->
+<div class="header">
+  <div class="row">
+
+    <!-- Banner Section -->
+    <div class="banner">
+      
+      <%= image_tag('banner-default.jpg') %>
+
+      <!-- Profile Photo -->
+      <div class="profile-photo">
+        <%= image_tag('profile-default.jpg') %>
+      </div>
+
+    </div><!-- end banner -->
+
+  </div>
+</div><!-- end header -->
+
+<!-- Page Content -->
+<div class="content-wrapper sidebar-bg sidebar-present">
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h1>Account Name</h1>
+    <h2 class="text-center">Coach</h2>
+
+    <!-- Account Statistics -->
+    <div class="account-statistic sidebar-section">
+      <div class="six columns text-center">
+        <h4>100</h4>
+        <h5>Followers</h5>
+      </div>
+      <div class=" six columns text-center">
+        <h4>100</h4>
+        <h5>Recordings</h5>
+      </div>
+    </div>
+
+    <!-- About -->
+    <div class="sidebar-section">
+      <h6>About</h6>
+      <p class="profile-about">Bio Here</p>
+    </div>
+
+  </div>
+
+  <!-- Content -->
+  <div class="content">
+
+    <!-- Tabs -->
+    <dl class="tabs">
+      <dd class="active"><a href="#videos">10 Videos</a></dd>
+    </dl>
+
+    <!-- Tabs Content -->
+    <ul class="tabs-content">
+
+      <!-- Video Tab -->
+      <li class="active videosTab" id="videosTab">
+
+        <!-- Videos -->
+        <%= link_to '#' do %>
+        <div class="video">
+          <div class="play"></div>
+          <div class="image-container">
+            <div class="image" style="background-image: url();"></div>
+          </div>
+          <div class="eight columns info">
+            <h5>Video Name</h5>
+            <h5>Player Name</h5>
+          </div>
+          <div class="four columns text-right info">
+          </div>
+        </div>
+        <% end %>
+
+      </li>
+    </ul><!-- end tabs content -->
+
+  </div><!-- end content -->
+
+</div><!-- end content wrapper -->
+
+<div class="footer text-center">
+  <%= link_to root_path, target: '_blank' do %>
+    <div class="powered-by"></div>
+  <% end %>
+</div>
