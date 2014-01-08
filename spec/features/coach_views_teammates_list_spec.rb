@@ -14,7 +14,8 @@ feature 'coach views teammate list', %q{
 scenario 'coach sees full list of teammates' do
 	it "should show teammates info" do
 		visit root_path
-
+		
+		
 		
 		visit teammates_path
 
