@@ -1,5 +1,26 @@
 <%= link_to "Log out", '/logout', method: :delete %>
 
-<h1>List your team here</h1>
+<h1>Team Name</h1>
 
-<h3>And here's a link to update your team</h3>
+<div>
+	<%= simple_form_for @teammate do |f| %>
+		<%= f.simple_fields_for :people do |p| %>
+			<%= p.input :name, label: 'Name' %>
+			<%= p.input :email, label: 'Email' %>
+
+			<%= p.submit 'Add Player' %>
+		<% end %>
+	<% end %>
+<div>
+
+<div>
+	<table>
+		<tr>
+			<td>First Name</td>
+			<td>Last Name</td>
+			<td>Email</td>
+		</tr>
+	</table>
+</div>
+
+

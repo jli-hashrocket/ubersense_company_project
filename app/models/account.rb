@@ -9,14 +9,15 @@ class Account < ActiveRecord::Base
 	attr_accessible :last_name
 	attr_accessible :password
 
-  validates_length_of :first_name, :maximum => 100
-  validates_length_of :last_name, :maximum => 100
+    validates_length_of :first_name, :maximum => 100
+    validates_length_of :last_name, :maximum => 100
 	validates :email, presence: true, uniqueness: true, format: { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
 	validates :password, format: {:with => /\A[a-z0-9A-Z!\#$%&'*+\/=?^_`{|}~-]{6,}\z/}, :if => Proc.new {|a| a.password && a.fbid.blank? }
   
 	has_many :teammates
 
 	before_validation :downcase_email
+
   
 	def name
 		"#{self.first_name} #{self.last_name}"

@@ -4,4 +4,9 @@ development:
   username: ubersense
   password: uberdb!
 
+test:
+  adapter: mysql2
+  database: ubersense_launch_academy_test
+  username:
+  password:
 

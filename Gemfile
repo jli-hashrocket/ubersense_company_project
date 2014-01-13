@@ -26,6 +26,9 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+# Makes forms easier
+gem 'simple_form'
+
 group :development, :test do
 	  gem "factory_girl_rails"
   	  gem "shoulda-matchers"

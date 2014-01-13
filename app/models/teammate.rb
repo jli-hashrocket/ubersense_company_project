@@ -6,4 +6,5 @@ class Teammate < ActiveRecord::Base
 
 	validates :account_id, presence: true
 	validates :person_id, presence: true, uniqueness: {scope: :account_id}
+
 end
