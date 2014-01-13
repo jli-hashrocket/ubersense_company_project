@@ -23,17 +23,17 @@ feature 'coach adds teammate to list', %q{
 		person = FactoryGirl.create(:person)
 
 		visit root_path
-		
+
 		fill_in 'account_email', with: account.email
 		fill_in 'account_password', with: 'password'
 
 		click_button 'Login'
-		
-		fill_in 'person_name', with: person.name
-		fill_in 'person_email', with: person.email
+
+		fill_in 'teammate_person_name', with: person.name
+		fill_in 'teammate_person_email', with: person.email
 
 		click_button 'Add Teammate'
-	
+
 		expect(page).to have_content person.name
 		expect(page).to have_content person.email
 
