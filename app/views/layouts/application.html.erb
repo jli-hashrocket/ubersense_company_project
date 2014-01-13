@@ -16,6 +16,9 @@
   <%= yield :head %>
 </head>
 <body>
+<% flash.each do |name, msg| -%>
+  <%= content_tag :div, msg, class: "#{name} alert-box" %>
+<% end -%>
 
 <%= yield %>
 

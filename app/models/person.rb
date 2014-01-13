@@ -6,6 +6,10 @@ class Person < ActiveRecord::Base
 
 	validates :guId, presence: true, uniqueness: true
 
+	validates_uniqueness_of :email
+
+	validates_presence_of :name
+
 	before_validation :assign_guid
 
 	def guId(owner_account_id=nil)
@@ -17,6 +21,18 @@ class Person < ActiveRecord::Base
 	def name
 		return read_attribute(:name) if self.account_id.blank?
 		return self.account.name
+	end
+
+	def teammate(current_user)
+		if person = Person.create(email: self.email, name: self.name)
+			if Teammate.create(account_id: current_user.id, person_id: person.id)
+				return true
+			else
+				return false
+			end
+		else
+			return false
+		end
 	end
 
 	class << self

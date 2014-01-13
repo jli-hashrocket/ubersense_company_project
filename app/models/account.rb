@@ -15,6 +15,7 @@ class Account < ActiveRecord::Base
 	validates :password, format: {:with => /\A[a-z0-9A-Z!\#$%&'*+\/=?^_`{|}~-]{6,}\z/}, :if => Proc.new {|a| a.password && a.fbid.blank? }
   
 	has_many :teammates
+	has_many :people, through: :teammates
 
 	before_validation :downcase_email
 

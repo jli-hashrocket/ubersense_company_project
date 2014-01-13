@@ -3,8 +3,8 @@ require 'digest/sha1'
 
 feature 'coach views teammate list', %q{
 	As a coach
-	I want to a view a list of players on my team
-	So that I can verify that they've been added
+	I want to view a list of players on my team
+	So that I can see my teammates
 } do
 
 # 	Acceptance Criteria:
@@ -24,8 +24,18 @@ feature 'coach views teammate list', %q{
 		click_button 'Login'
 		
 		expect(page).to have_content 'Team'
-		expect(page).to have_button 'Add Player'
+		expect(page).to have_button 'Add Teammate'
 		expect(page).to have_content 'Email'
 	end
+
+	scenario 'form is submitted with no valid attributes' do
+
+		visit root_path
+		click_button 'Login'
+		
+		expect(page).to have_content 'Invalid email/password combination'
+	end
+
+	scenario 'it displays the name of all the teammates'
 
 end

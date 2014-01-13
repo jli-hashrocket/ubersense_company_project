@@ -1,0 +1,29 @@
+<div class="row">
+	<h1>Team Name</h1>
+	<h3><%= link_to "Log out", '/logout', method: :delete %></h3>
+</div>
+
+<div class="row">
+	<%= simple_form_for @person do |f| %>
+			<%= f.input :name, label: "Name" %>
+			<%= f.input :email, label: "Email" %>
+			<%= f.submit 'Add Teammate' %>
+	<% end %>
+<div>
+
+<div class="row">
+	<table>
+		<tr>
+			<td>Name</td>
+			<td>Email</td>
+		</tr>
+		<% @teammates.each do |teammate| %>
+			<tr>
+				<td><%= teammate.name %></td>
+				<td><%= teammate.email %></td>
+			</tr>
+		<% end %>
+	</table>
+</div>
+
+

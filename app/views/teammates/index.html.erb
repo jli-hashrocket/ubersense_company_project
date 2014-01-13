@@ -3,13 +3,10 @@
 <h1>Team Name</h1>
 
 <div>
-	<%= simple_form_for @teammate do |f| %>
-		<%= f.simple_fields_for :people do |p| %>
-			<%= p.input :name, label: 'Name' %>
-			<%= p.input :email, label: 'Email' %>
-
-			<%= p.submit 'Add Player' %>
-		<% end %>
+	<%= simple_form_for @person do |f| %>
+			<%= f.input :name, label: "Name" %>
+			<%= f.input :email, label: "Email" %>
+			<%= f.submit 'Add Teammate' %>
 	<% end %>
 <div>
 

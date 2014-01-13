@@ -13,6 +13,12 @@ class TeammatesController < ApplicationController
 
 	def create
 		#Create new People Object
+		#@teammate = Teammate.new
+		# if @teammate = Teammate.add_teammate
+
+		# else
+
+		# end
 	end
 
 	def show
@@ -33,4 +39,7 @@ class TeammatesController < ApplicationController
 
 	private 
 
+	def teammates_params
+		params.require(:teammate).permit(people: [:name, :email])
+	end
 end
