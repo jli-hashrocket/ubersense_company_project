@@ -1,5 +1,6 @@
 class PeopleController < ApplicationController
-
+	before_filter :authorize
+	
 	def index
 		@person = Person.new
 		@teammates = current_user.people

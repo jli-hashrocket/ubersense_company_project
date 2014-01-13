@@ -29,12 +29,13 @@ feature 'coach adds teammate to list', %q{
 
 		click_button 'Login'
 		
-		fill_in 'teammate_people_name', with: person.name
-		fill_in 'teammate_people_email', with: person.email
+		fill_in 'person_name', with: person.name
+		fill_in 'person_email', with: person.email
 
 		click_button 'Add Teammate'
 	
-		expect(page).to have_content "#{person.name} Added to the team!"
+		expect(page).to have_content person.name
+		expect(page).to have_content person.email
 
 	end
 end

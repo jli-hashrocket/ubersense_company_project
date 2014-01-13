@@ -4,7 +4,6 @@ class TeammatesController < ApplicationController
 	def index
 		#Render all People that belong to a specific coach(account)
 		#@person = People.all
-		@teammate = Teammate.new
 	end
 	
 	def new

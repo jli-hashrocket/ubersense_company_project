@@ -1,5 +1,5 @@
 class Person < ActiveRecord::Base
-  attr_accessible :account_id, :email, :fbid, :guId, :name
+	attr_accessible :account_id, :email, :fbid, :guId, :name
 
 	belongs_to :account
 	has_many :teammates
@@ -24,8 +24,9 @@ class Person < ActiveRecord::Base
 	end
 
 	def teammate(current_user)
-		if person = Person.create(email: self.email, name: self.name)
-			if Teammate.create(account_id: current_user.id, person_id: person.id)
+		if person = Person.find_or_create_by(email: self.email, name: self.name)
+			teammate = Teammate.new(account_id: current_user.id, person_id: person.id)
+			if teammate.save
 				return true
 			else
 				return false
@@ -70,8 +71,8 @@ class Person < ActiveRecord::Base
 			return person if person
 
 			case type
-				when 'fbid', 'email'
-					person = Person.where(type => identifier).first
+			when 'fbid', 'email'
+				person = Person.where(type => identifier).first
 			end
 			return person if person
 
