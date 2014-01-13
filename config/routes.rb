@@ -1,8 +1,6 @@
 UbersenseLaunchAcademy::Application.routes.draw do
-  root to: 'people#index'
+  root to: 'teammates#index'
 
-  resources :people
-  
   resources :teammates
 
 	get '/login', to: 'login#index', as: 'login'

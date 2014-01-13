@@ -2,22 +2,24 @@ class TeammatesController < ApplicationController
 	before_filter :authorize
 
 	def index
+		@teammate = Teammate.new
 		#Render all People that belong to a specific coach(account)
-		#@person = People.all
+		@teammates = current_user.people
 	end
-	
+
 	def new
 		#Open new People Object instance
 	end
 
 	def create
-		#Create new People Object
-		#@teammate = Teammate.new
-		# if @teammate = Teammate.add_teammate
-
-		# else
-
-		# end
+		@teammate = Teammate.new
+		if @teammate.add_teammate(current_user,teammates_params)
+			redirect_to teammates_path
+			flash[:notice] = "Teammate Added!"
+		else
+			redirect_to teammates_path
+			flash[:alert] = "Teammate Not Added!"
+		end
 	end
 
 	def show
@@ -36,9 +38,9 @@ class TeammatesController < ApplicationController
 
 	end
 
-	private 
+	private
 
 	def teammates_params
-		params.require(:teammate).permit(people: [:name, :email])
+		params.require(:teammate).permit(person: [:name, :email])
 	end
 end

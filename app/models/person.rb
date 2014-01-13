@@ -23,19 +23,6 @@ class Person < ActiveRecord::Base
 		return self.account.name
 	end
 
-	def teammate(current_user)
-		if person = Person.find_or_create_by(email: self.email, name: self.name)
-			teammate = Teammate.new(account_id: current_user.id, person_id: person.id)
-			if teammate.save
-				return true
-			else
-				return false
-			end
-		else
-			return false
-		end
-	end
-
 	class << self
 		def get_person_for_guid(guId, name=nil, email=nil)
 			if guId.to_i.to_s == guId.to_s
