@@ -30,16 +30,13 @@ gem 'jbuilder', '~> 1.2'
 gem 'simple_form'
 
 group :development, :test do
-	  gem "factory_girl_rails"
-  	  gem "shoulda-matchers"
-      gem "better_errors"
-      gem "capybara"
-      gem "rspec-rails"
-      gem "valid_attribute"
-      gem "pry-rails"
-      gem "dotenv"
-      gem "launchy"
-      gem "rails-erd"
+  gem "factory_girl_rails"
+  gem "shoulda"
+  gem "better_errors"
+  gem "capybara"
+  gem "valid_attribute"
+  gem "pry-rails"
+  gem "launchy"
 end
 
 group :doc do
