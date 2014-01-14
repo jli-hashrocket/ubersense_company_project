@@ -14,13 +14,13 @@ class Account < ActiveRecord::Base
     validates_length_of :last_name, :maximum => 100
 	validates :email, presence: true, uniqueness: true, format: { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
 	validates :password, format: {:with => /\A[a-z0-9A-Z!\#$%&'*+\/=?^_`{|}~-]{6,}\z/}, :if => Proc.new {|a| a.password && a.fbid.blank? }
-  
+
 	has_many :teammates
 	has_many :people, through: :teammates
 
 	before_validation :downcase_email
 
-  
+
 	def name
 		"#{self.first_name} #{self.last_name}"
 	end
@@ -40,8 +40,7 @@ class Account < ActiveRecord::Base
 	end
 
   def self.add_players_from_file(current_user, file_path)
-    csv_file = file_path
-    CSV.foreach(csv_file, headers: true) do |row|
+    CSV.foreach(file_path, headers: true) do |row|
       name = row["name"]
       email = row["email"]
       if person = Person.find_or_create_by(name: name, email: email)
@@ -55,7 +54,7 @@ class Account < ActiveRecord::Base
 	def downcase_email
 		self.email = self.email.downcase if self.email
 	end
-  
+
   def self.hash_password(password)
     Digest::SHA1.hexdigest(password)
   end

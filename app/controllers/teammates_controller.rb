@@ -39,8 +39,10 @@ class TeammatesController < ApplicationController
 	end
 
 	def import
-		file = params[:file]
-		file.tempfile
+		file = params[:file].tempfile
+		Account.add_players_from_file(current_user, file)
+		redirect_to teammates_path
+		flash[:notice] = "CSV uploaded, and teammates added!"
 	end
 
 	private
