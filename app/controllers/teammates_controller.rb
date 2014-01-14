@@ -38,6 +38,11 @@ class TeammatesController < ApplicationController
 
 	end
 
+	def import
+		file = params[:file]
+		file.tempfile
+	end
+
 	private
 
 	def teammates_params
