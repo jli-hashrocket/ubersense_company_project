@@ -9,12 +9,7 @@ class CoachViewsTeammatesTest < ActionDispatch::IntegrationTest
     coach = FactoryGirl.create(:account)
     teammates = FactoryGirl.create_list(:teammate, 3, account: coach)
 
-    visit root_path
-
-    fill_in 'account_email', with: coach.email
-    fill_in 'account_password', with: 'password'
-
-    click_button 'Login'
+    sign_in_as(coach.email, 'password')
 
     teammates.each do |teammate|
       assert page.has_content?(teammate.person.name)

@@ -9,12 +9,7 @@ class CoachAddsTeammateTest < ActionDispatch::IntegrationTest
     coach = FactoryGirl.create(:account)
     person = FactoryGirl.create(:person)
 
-    visit root_path
-
-    fill_in 'account_email', with: coach.email
-    fill_in 'account_password', with: 'password'
-
-    click_button 'Login'
+    sign_in_as(coach.email, 'password')
 
     fill_in 'teammate_person_name', with: person.name
     fill_in 'teammate_person_email', with: person.email

@@ -13,7 +13,7 @@ class TeammatesController < ApplicationController
 
 	def create
 		@teammate = Teammate.new
-		if @teammate.add_teammate(current_user,teammates_params)
+		if Teammate.add_teammate(current_user,teammates_params)
 			redirect_to teammates_path
 			flash[:notice] = "Teammate Added!"
 		else

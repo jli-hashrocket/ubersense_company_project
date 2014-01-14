@@ -13,6 +13,12 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  def sign_in_as(username, password)
+    visit root_path
+    fill_in 'account_email', with: username
+    fill_in 'account_password', with: password
+    click_button 'Login'
+  end
 end
 
 class ActionDispatch::IntegrationTest
