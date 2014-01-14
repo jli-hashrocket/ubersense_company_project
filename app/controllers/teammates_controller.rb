@@ -40,9 +40,14 @@ class TeammatesController < ApplicationController
 
 	def import
 		file = params[:file].tempfile
-		Account.add_players_from_file(current_user, file)
-		redirect_to teammates_path
-		flash[:notice] = "CSV uploaded, and teammates added!"
+		if params[:file].original_filename.split('.')[1] == 'csv'
+			Account.add_players_from_file(current_user, file)
+			redirect_to teammates_path
+			flash[:notice] = "CSV uploaded, and teammates added!"
+		else
+			redirect_to teammates_path
+			flash[:alert] = "Sorry invalid file type or wrong headers!"
+		end
 	end
 
 	private
