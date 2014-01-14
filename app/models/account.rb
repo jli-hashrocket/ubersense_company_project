@@ -1,4 +1,5 @@
 require 'digest/sha1'
+require 'csv'
 
 class Account < ActiveRecord::Base
   attr_accessor :password
@@ -37,6 +38,17 @@ class Account < ActiveRecord::Base
 	  hashed_password = hash_password(password || "")
 	  find(:first, :conditions => ["email = ? and hashed_pwd = ?", email, hashed_password])
 	end
+
+  def self.add_players_from_file(current_user, file_path)
+    csv_file = file_path
+    CSV.foreach(csv_file, headers: true) do |row|
+      name = row["name"]
+      email = row["email"]
+      if person = Person.find_or_create_by(name: name, email: email)
+        Teammate.create(account_id: current_user.id, person_id: person.id)
+      end
+    end
+  end
 
   private
 
