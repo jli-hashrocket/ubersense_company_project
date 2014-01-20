@@ -30,6 +30,7 @@
 			<tr>
 				<td><%= teammate.name %></td>
 				<td><%= teammate.email %></td>
+				<td><%= link_to 'Edit', edit_person_path(teammate) %></td>
 			</tr>
 		<% end %>
 	</table>

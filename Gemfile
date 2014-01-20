@@ -33,6 +33,7 @@ group :development, :test do
   gem "factory_girl_rails"
   gem "shoulda"
   gem "better_errors"
+  gem "binding_of_caller"
   gem "capybara"
   gem "valid_attribute"
   gem "pry-rails"

@@ -27,11 +27,13 @@ class TeammatesController < ApplicationController
 	end
 
 	def edit
-
+		# @person = Person.find(params[:id])
+		# @teammate = Teammate.where(person_id: @person.id).first
 	end
 
 	def update
-
+		#@person = Person.find(params[:id])
+		#@teammate = Teammate.where(person_id: @person.id).first
 	end
 
 	def destroy
@@ -40,18 +42,16 @@ class TeammatesController < ApplicationController
 
 	def import
 		file = params[:file].tempfile
-		if params[:file].original_filename.split('.')[1] == 'csv'
+		if params[:file].original_filename.end_with?('.csv')
 			if Account.add_players_from_file(current_user, file) != false
 				flash[:notice] = "CSV uploaded, and teammates added!"
-				redirect_to teammates_path
 			else
 				flash[:alert] = "Sorry invalid headers!"
-				redirect_to teammates_path
 			end
 		else
 			flash[:alert] = "Sorry invalid file type!"
-			redirect_to teammates_path
 		end
+		redirect_to teammates_path
 	end
 
 	private
