@@ -45,11 +45,13 @@ class Account < ActiveRecord::Base
         name = row["name"]
         email = row["email"]
         person = Person.find_or_create_by(name: name, email: email)
-        Teammate.create(account_id: current_user.id, person_id: person.id)
+        teammate = Teammate.new(account_id: current_user.id, person_id: person.id)
+        teammate.save
       else
-        false
+        return false
       end
     end
+
   end
 
   private

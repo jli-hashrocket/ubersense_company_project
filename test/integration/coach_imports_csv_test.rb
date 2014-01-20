@@ -25,7 +25,8 @@ class CoachImportsCsvTest < ActionDispatch::IntegrationTest
     attach_file "file", Rails.root.to_s + '/test/sample_csv/sample.rtf'
     click_button("Import CSV")
 
-    assert page.has_content?("Sorry invalid file type or wrong headers!")
+    assert page.has_content?("Sorry invalid file type!")
+    assert page.has_content?("Team Name")
   end
 
   test 'should not import invalid headers' do
@@ -33,10 +34,11 @@ class CoachImportsCsvTest < ActionDispatch::IntegrationTest
     sign_in_as(coach.email, 'password')
 
     page.find("#file").click
-    attach_file "file", Rails.root.to_s + '/test/sample_csv/sample.rtf'
+    attach_file "file", Rails.root.to_s + '/test/sample_csv/invalid_headers.csv'
     click_button("Import CSV")
 
-    assert page.has_content?("Sorry invalid file type or wrong headers!")
+    assert page.has_content?("Sorry invalid headers!")
+    assert page.has_content?("Team Name")
   end
 
   # test 'not import duplicate teammates'
