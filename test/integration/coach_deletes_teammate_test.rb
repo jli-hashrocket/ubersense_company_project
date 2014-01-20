@@ -17,8 +17,9 @@ class CoachDeletesTeammateTest < ActionDispatch::IntegrationTest
     click_button 'Add Teammate'
 
     click_link 'Delete'
-    assert page.has_content?('Person has been deleted')
-    assert !page.has_content?(person.name && person.email)
+    assert page.has_content?('Teammate has been deleted')
+    assert !page.has_content?(person.name)
+    assert !page.has_content?(person.email)
   end
 
 end

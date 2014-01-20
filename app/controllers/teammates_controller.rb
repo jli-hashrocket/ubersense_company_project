@@ -4,11 +4,7 @@ class TeammatesController < ApplicationController
 	def index
 		@teammate = Teammate.new
 		#Render all People that belong to a specific coach(account)
-		@teammates = current_user.people
-	end
-
-	def new
-		#Open new People Object instance
+		@teammates = current_user.teammates
 	end
 
 	def create
@@ -22,21 +18,14 @@ class TeammatesController < ApplicationController
 		end
 	end
 
-	def show
-
-	end
-
-	def edit
-		# @person = Person.find(params[:id])
-		# @teammate = Teammate.where(person_id: @person.id).first
-	end
-
-	def update
-		#@person = Person.find(params[:id])
-		#@teammate = Teammate.where(person_id: @person.id).first
-	end
-
 	def destroy
+		@teammate = Teammate.find(params[:id])
+    if @teammate.destroy
+      flash[:notice] = "Teammate has been deleted"
+    else
+      flash[:alert] = "Teammate was not deleted"
+    end
+    redirect_to teammates_path
 
 	end
 
