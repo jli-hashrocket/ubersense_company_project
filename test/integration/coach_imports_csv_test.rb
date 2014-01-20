@@ -41,9 +41,19 @@ class CoachImportsCsvTest < ActionDispatch::IntegrationTest
     assert page.has_content?("Team Name")
   end
 
-  # test 'not import duplicate teammates'
+  test 'not import duplicate teammates' do
+    coach = FactoryGirl.create(:account)
+    sign_in_as(coach.email, 'password')
 
-  # test 'updates name if duplicate email'
+    page.find("#file").click
+    attach_file "file", Rails.root.to_s + '/test/sample_csv/sample.csv'
+    click_button("Import CSV")
+    teammates_count = Teammate.count
+
+    attach_file "file", Rails.root.to_s + '/test/sample_csv/sample.csv'
+    click_button("Import CSV")
+    assert (Teammate.count == teammates_count)
+  end
 
   # test 'submit form without adding CSV'
 
