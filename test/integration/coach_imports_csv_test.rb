@@ -55,6 +55,14 @@ class CoachImportsCsvTest < ActionDispatch::IntegrationTest
     assert (Teammate.count == teammates_count)
   end
 
-  # test 'submit form without adding CSV'
+  test 'submit form without adding CSV' do
+    coach = FactoryGirl.create(:account)
+    sign_in_as(coach.email, 'password')
+
+    page.find("#file").click
+    click_button("Import CSV")
+
+    assert page.has_content?('Please attach a valid file')
+  end
 
 end
