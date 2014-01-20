@@ -1,12 +1,11 @@
 require 'test_helper'
 
-class CoachEditsTeammateTest < ActionDispatch::IntegrationTest
-
+class CoachDeletesTeammateTest < ActionDispatch::IntegrationTest
   def setup
     Capybara.reset_sessions!
   end
 
-  test 'edits teammate with valid information' do
+  test 'deletes teammate' do
     coach = FactoryGirl.create(:account)
     person = FactoryGirl.create(:person)
 
@@ -16,13 +15,10 @@ class CoachEditsTeammateTest < ActionDispatch::IntegrationTest
     fill_in 'teammate_person_email', with: person.email
 
     click_button 'Add Teammate'
-    click_link 'Edit'
 
-    fill_in 'Name', with: 'Edward Scissorhands'
-    fill_in 'Email', with: 'escissors@gmail.com'
-
-    click_button 'Update Teammate'
-    assert page.has_content?('Person has been updated')
+    click_link 'Delete'
+    assert page.has_content?('Person has been deleted')
+    assert !page.has_content?(person.name && person.email)
   end
 
 end

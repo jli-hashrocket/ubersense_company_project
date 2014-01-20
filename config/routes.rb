@@ -4,7 +4,7 @@ UbersenseLaunchAcademy::Application.routes.draw do
   resources :teammates do
     collection { post :import }
   end
-  resources :people, only: [:edit, :update]
+  resources :people, only: [:edit, :update, :destroy]
 
 	get '/login', to: 'login#index', as: 'login'
 	post '/login', to: 'login#index'

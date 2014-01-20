@@ -31,6 +31,7 @@
 				<td><%= teammate.name %></td>
 				<td><%= teammate.email %></td>
 				<td><%= link_to 'Edit', edit_person_path(teammate) %></td>
+				<td><%= link_to 'Delete', teammate, method: :delete %></td>
 			</tr>
 		<% end %>
 	</table>

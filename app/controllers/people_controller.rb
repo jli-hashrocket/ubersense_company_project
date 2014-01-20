@@ -14,6 +14,16 @@ class PeopleController < ApplicationController
     redirect_to teammates_path
   end
 
+  def destroy
+    @person = Person.find(params[:id])
+    if @person.destroy
+      flash[:notice] = "Person has been deleted"
+    else
+      flash[:alert] = "Person was not deleted"
+    end
+    redirect_to teammates_path
+  end
+
   private
 
   def people_params

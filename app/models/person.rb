@@ -2,7 +2,7 @@ class Person < ActiveRecord::Base
 	attr_accessible :account_id, :email, :fbid, :guId, :name
 
 	belongs_to :account
-	has_many :teammates
+	has_many :teammates, dependent: :destroy
 
 	validates :guId, presence: true, uniqueness: true
 
