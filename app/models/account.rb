@@ -39,20 +39,17 @@ class Account < ActiveRecord::Base
 	  find(:first, :conditions => ["email = ? and hashed_pwd = ?", email, hashed_password])
 	end
 
-  def self.add_players_from_file(current_user, file_path)
+  def add_players_from_file(file_path)
     file = CSV.read( file_path, headers: true)
-    if file.headers == ["name", "email"]
-      file.each do |row|
-        name = row["name"]
-        email = row["email"]
-        person = Person.get_person_for_guid(Person.guid_construction(nil, email, nil, name), name, email)
-        teammate = Teammate.new(account_id: current_user.id, person_id: person.id)
-        teammate.save
-      end
-      true
-    else
-      false
+    return false if file.headers != ["name", "email"]
+    file.each do |row|
+      name = row["name"]
+      email = row["email"]
+      person = Person.get_person_for_guid(Person.guid_construction(nil, email, nil, name), name, email)
+      teammate = Teammate.new(account_id: self.id, person_id: person.id)
+      teammate.save
     end
+    true
   end
 
   private

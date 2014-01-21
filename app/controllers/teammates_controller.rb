@@ -33,7 +33,7 @@ class TeammatesController < ApplicationController
 		if params[:file] != nil
 			file = params[:file].tempfile
 			if params[:file].original_filename.end_with?('.csv')
-				if Account.add_players_from_file(current_user, file) != false
+				if current_user.add_players_from_file(file) != false
 					flash[:notice] = "CSV uploaded, and teammates added!"
 				else
 					flash[:alert] = "Sorry invalid headers!"
