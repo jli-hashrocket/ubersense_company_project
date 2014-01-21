@@ -25,12 +25,18 @@
 		<tr>
 			<th>Name</th>
 			<th>Email</th>
+			<th></th>
+			<th></th>
 		</tr>
 		<% @teammates.each do |teammate| %>
 			<tr>
 				<td><%= teammate.person.name %></td>
 				<td><%= teammate.person.email %></td>
+				<% if teammate.person.account.nil? %>
 				<td><%= link_to 'Edit', edit_person_path(teammate.person) %></td>
+				<% else %>
+				<td></td>
+				<% end %>
 				<td><%= link_to 'Delete', teammate, method: :delete %></td>
 			</tr>
 		<% end %>

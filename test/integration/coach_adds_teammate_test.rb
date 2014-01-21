@@ -25,7 +25,7 @@ class CoachAddsTeammateTest < ActionDispatch::IntegrationTest
     assert Person.count == 1
   end
 
-  test 'updates name if duplicate email' do
+  test 'should not update name if duplicate email' do
     coach = FactoryGirl.create(:account)
     person = FactoryGirl.create(:person)
 
@@ -41,8 +41,27 @@ class CoachAddsTeammateTest < ActionDispatch::IntegrationTest
 
     click_button 'Add Teammate'
 
-    assert page.has_content?('John Smith')
+    assert !page.has_content?('John Smith')
+    assert page.has_content?(person.name)
     assert page.has_content?(person.email)
+    assert page.has_content?('Teammate Not Added!')
+  end
+
+  test 'adds person with an existing account to team' do
+    existing_account = FactoryGirl.create(:account)
+    coach = FactoryGirl.create(:account)
+
+    sign_in_as(coach.email, 'password')
+
+    fill_in 'teammate_person_name', with: existing_account.name
+
+    fill_in 'teammate_person_email', with: existing_account.email
+
+    click_button 'Add Teammate'
+
+    assert page.has_content?(existing_account.name)
+    assert page.has_content?(existing_account.email)
+
   end
 
 end

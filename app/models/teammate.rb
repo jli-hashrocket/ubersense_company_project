@@ -9,9 +9,12 @@ class Teammate < ActiveRecord::Base
 
   class << self
     def add_teammate(current_user,teammate)
-     person = Person.find_or_initialize_by(email: teammate[:person][:email])
-     person.name = teammate[:person][:name]
-     person.save
+     name = teammate[:person][:name]
+     email = teammate[:person][:email]
+     person = Person.get_person_for_guid(Person.guid_construction(nil, email, nil, name), name, email)
+     #person = Person.find_or_initialize_by(email: teammate[:person][:email])
+     #person.name = teammate[:person][:name]
+     #person.save
      teammate = Teammate.new(account_id: current_user.id, person_id: person.id)
      teammate.save
     end

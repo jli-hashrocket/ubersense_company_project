@@ -6,6 +6,8 @@ class Person < ActiveRecord::Base
 
 	validates :guId, presence: true, uniqueness: true
 
+	validates :email, presence: true
+
 	validates_uniqueness_of :email
 
 	validates_presence_of :name
@@ -49,7 +51,8 @@ class Person < ActiveRecord::Base
 				end
 
 				name = account.name.blank? ? name : account.name
-				person = Person.new(guId: account.id, account_id: account.id, name: name, email: account.email, fbid: account.fbid)
+				#Deleted FBID argument
+				person = Person.new(guId: account.id, account_id: account.id, name: name, email: account.email)
 				person.save!
 				return person
 			end
@@ -90,6 +93,7 @@ class Person < ActiveRecord::Base
 	end
 
 	private
+
 	def assign_guid
 		return unless self.guId.blank?
 		self.guId = Person.guid_construction(self.account_id, self.email, self.fbid, self.name)

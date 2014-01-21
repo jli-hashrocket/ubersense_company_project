@@ -6,12 +6,18 @@ class PeopleController < ApplicationController
 
   def update
     @person = Person.find(params[:id])
-    if @person.update_attributes(people_params)
-      flash[:notice] = "Person has been updated"
+    if @person.account.nil?
+      if @person.update_attributes(people_params)
+        flash[:notice] = "Person has been updated"
+        redirect_to teammates_path
+      else
+        flash[:alert] = "Person not updated"
+        render 'edit'
+      end
     else
-      flash[:alert] = "Person not updated"
+      raise ApplicationController::RoutingError.new('Not Found')
     end
-    redirect_to teammates_path
+
   end
 
   private

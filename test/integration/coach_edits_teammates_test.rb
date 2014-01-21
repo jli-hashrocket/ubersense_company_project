@@ -19,7 +19,25 @@ class CoachEditsTeammateTest < ActionDispatch::IntegrationTest
     fill_in 'Email', with: 'escissors@gmail.com'
 
     click_button 'Update Teammate'
+
     assert page.has_content?('Person has been updated')
+  end
+
+  test 'edit teammate with invalid information' do
+    coach = FactoryGirl.create(:account)
+    person = FactoryGirl.create(:person)
+    FactoryGirl.create(:teammate, account: coach, person: person)
+
+    sign_in_as(coach.email, 'password')
+
+    click_link 'Edit'
+
+    fill_in 'Name', with: ''
+    fill_in 'Email', with: ''
+
+    click_button 'Update Teammate'
+
+    assert page.has_content?("We can't build a guid without an email or fbid")
   end
 
 end
