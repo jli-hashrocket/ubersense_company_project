@@ -9,13 +9,10 @@ class CoachEditsTeammateTest < ActionDispatch::IntegrationTest
   test 'edits teammate with valid information' do
     coach = FactoryGirl.create(:account)
     person = FactoryGirl.create(:person)
+    FactoryGirl.create(:teammate, account: coach, person: person)
 
     sign_in_as(coach.email, 'password')
 
-    fill_in 'teammate_person_name', with: person.name
-    fill_in 'teammate_person_email', with: person.email
-
-    click_button 'Add Teammate'
     click_link 'Edit'
 
     fill_in 'Name', with: 'Edward Scissorhands'
