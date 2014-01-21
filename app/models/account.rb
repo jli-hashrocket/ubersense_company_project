@@ -40,18 +40,19 @@ class Account < ActiveRecord::Base
 	end
 
   def self.add_players_from_file(current_user, file_path)
-    CSV.foreach(file_path, headers: true) do |row|
-      if row.headers == ["name", "email"]
+    file = CSV.read( file_path, headers: true)
+    if file.headers == ["name", "email"]
+      file.each do |row|
         name = row["name"]
         email = row["email"]
-        person = Person.find_or_create_by(name: name, email: email)
+        person = Person.get_person_for_guid(Person.guid_construction(nil, email, nil, name), name, email)
         teammate = Teammate.new(account_id: current_user.id, person_id: person.id)
         teammate.save
-      else
-        return false
       end
+      true
+    else
+      false
     end
-
   end
 
   private
