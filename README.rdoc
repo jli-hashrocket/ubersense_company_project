@@ -1,28 +1,23 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Hi, My name is Van!
 
-Things you may want to cover:
+This was a partner project I did for a small startup called ubersense as part of a web development course, where I would submit pull requests to their rails code base and recieve feedback based off my contributions. These include building a Coach to team management list in rails where teammates could be added manually through a form or loaded into a CSV.
 
-* Ruby version
+Topics covered:
 
-* System dependencies
+* API GUIDS: Working with SHA to seed database and create cryptographic hashes for user authentication.
 
-* Configuration
+* CSV Parsing: Implemented CSV compatibility through converting comma sepearted values to User Ruby objects and mapping them to mysql with Active Record ORM.
 
-* Database creation
+* REST Architecture: For creating, editing, and deleting objects.
 
-* Database initialization
+* Framework: Rails 4
 
-* How to run the test suite
+# CSS Bootstrap: Foundation
 
-* Services (job queues, cache servers, search engines, etc.)
+* Database: Mysql
 
-* Deployment instructions
+* Testing Suite: Rails default test suite with Capybara for integration testing.
 
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Company Sponser: http://www.ubersense.com/
